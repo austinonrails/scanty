@@ -6,9 +6,9 @@
 </head>
 <body>
 <div id="header">
-	<div id="logo2">
+	<div id="logo">
 		<h1><a href="/"><%= Blog.title %></a></h1>
-		<p>by <%= Blog.author %></p>
+		<p><%= Blog.tagline %></p>
 	</div>
 </div>
 
@@ -18,7 +18,7 @@
 
 <div id="footer">
 	<p id="legal">
-	Content by <%= Blog.author %> | 
+	Powered by <a href="http://github.com/adamwiggins/scanty/tree/master">Scanty</a> | 
 	Design adapted from <a href="http://www.freecsstemplates.org/preview/replenish">Replenish</a>
 </div>
 </body>

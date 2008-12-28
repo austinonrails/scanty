@@ -2,17 +2,16 @@ body {
 	margin: 0px;
 	padding: 20px;
 	margin-left: 50px;
-	background: #0A0A0D;
+	background: #fff;
 	text-align: justify;
 	font: 14px "Trebuchet MS", Arial, Helvetica, sans-serif;
-	color: #FFFFDC;
+	color: #000;
 }
 
 h1, h2, h3 {
 	font: 1.82em;
 	font-weight: normal;
 	font-family: Arial, Helvetica, sans-serif;
-	color: #FFFFFF;
 	text-align: left;
 }
 
@@ -25,7 +24,7 @@ ul {
 }
 
 a {
-	color: #828170;
+	color: red;
 }
 
 a:hover {
@@ -46,13 +45,12 @@ hr {
 	letter-spacing: -2px;
 	font-size: 4em;
 	font-weight: normal;
-	color: #FFFFFF;
 }
 
 #logo h1 a {
 	display: block;
 	text-decoration: none;
-	color: #FFFFFF;
+	color: #9b0808;
 }
 
 #logo p {
@@ -65,7 +63,6 @@ hr {
 #logo a {
 	display: block;
 	text-decoration: none;
-	color: #FFFFFF;
 }
 
 #logo2 h1 {
@@ -76,13 +73,11 @@ hr {
 	letter-spacing: -2px;
 	font-size: 2em;
 	font-weight: normal;
-	color: #FFFFFF;
 }
 
 #logo2 h1 a {
 	display: block;
 	text-decoration: none;
-	color: #FFFFFF;
 }
 
 #logo2 p {
@@ -95,7 +90,6 @@ hr {
 #logo2 a {
 	display: block;
 	text-decoration: none;
-	color: #FFFFFF;
 }
 
 /* Content */
@@ -126,7 +120,6 @@ hr {
 	text-align: center;
 	font-size: 10px;
 	font-weight: bold;
-	color: #999999;
 }
 
 .post .date b {
@@ -148,8 +141,8 @@ hr {
 }
 
 .post .title a {
-	color: white;
 	text-decoration: none;
+	color: #000;
 }
 
 .post .meta {
@@ -200,6 +193,10 @@ hr {
 	color: #979680;
 }
 
+.postzoom .meta a {
+	color: #828170;
+}
+
 .postzoom .entry {
 	margin: 0;
 	padding: 0;
@@ -221,7 +218,6 @@ hr {
 	padding-top: 20px;
 	padding-bottom: 20px;
 	font-family: Tahoma, Arial, Helvetica, sans-serif;
-	color: #FFFFFF;
 }
 
 #legal {
@@ -241,7 +237,7 @@ hr {
 .archive .title a {
 	font-size: 120%;
 	text-decoration: none;
-	color: #FFFFDC;
+	padding-left:10px;
 }
 
 /* Code blocks */

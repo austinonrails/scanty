@@ -9,11 +9,19 @@ class Post < Sequel::Model
 			primary_key :id
 			text :title
 			text :body
+			text :body_html
+			text :summary_html
 			text :slug
 			text :tags
 			timestamp :created_at
 		end
 		create_table
+	end
+	
+	before_save do
+	  self.body_html = to_html(body)
+	  # Maruku will occasionlly escape a trailing </p>, easier to strip it out than to figure out why.
+	  self.summary_html = to_html(summary).gsub("&lt;/p&gt;", "")
 	end
 
 	def url
@@ -25,17 +33,9 @@ class Post < Sequel::Model
 		Blog.url_base.gsub(/\/$/, '') + url
 	end
 
-	def body_html
-		to_html(body)
-	end
-
 	def summary
 		summary, more = split_content(body)
 		summary
-	end
-
-	def summary_html
-		to_html(summary)
 	end
 
 	def more?
@@ -44,7 +44,7 @@ class Post < Sequel::Model
 	end
 
 	def linked_tags
-		tags.split.inject([]) do |accum, tag|
+		tags.split(",").inject([]) do |accum, tag|
 			accum << "<a href=\"/past/tags/#{tag}\">#{tag}</a>"
 		end.join(" ")
 	end
@@ -69,7 +69,7 @@ class Post < Sequel::Model
 		show = []
 		hide = []
 		parts.each do |part|
-			if show.join.length < 100
+			if show.join.length < 400
 				show << part
 			else
 				hide << part
