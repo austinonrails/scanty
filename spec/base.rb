@@ -1,11 +1,17 @@
 require 'rubygems'
 require 'spec'
 
-$LOAD_PATH.unshift File.join(File.dirname(__FILE__), "..", "vendor", "sequel")
-require 'sequel'
+require 'activerecord'
 
-Sequel.sqlite
+ActiveRecord::Base.establish_connection(:adapter => "sqlite3", :database => ":memory:")
 
+ActiveRecord::Schema.define do
+  create_table :posts do |t|
+    t.text :title, :body, :body_html, :summary_html, :slug, :tags
+    t.timestamp :created_at
+  end
+end
+    
 $LOAD_PATH.unshift(File.dirname(__FILE__) + '/../lib')
 require 'post'
 

@@ -1,11 +1,10 @@
 require 'rubygems'
 require 'sinatra'
 
-$LOAD_PATH.unshift File.dirname(__FILE__) + '/vendor/sequel'
-require 'sequel'
+require 'activerecord'
 
 configure do
-	Sequel.connect(ENV['DATABASE_URL'] || 'sqlite://blog.db')
+	ActiveRecord::Base.establish_connection(:adapter => "sqlite3", :database => "blog.db")
 
 	require 'ostruct'
 	Blog = OpenStruct.new(
@@ -45,12 +44,12 @@ layout 'layout'
 ### Public
 
 get '/' do
-	posts = Post.reverse_order(:created_at).limit(10)
+	posts = Post.all(:order => "created_at DESC", :limit => 10)
 	erb :index, :locals => { :posts => posts }, :layout => false
 end
 
 get '/past/:year/:month/:day/:slug/' do
-	post = Post.filter(:slug => params[:slug]).first
+	post = Post.find_all_by_slug(params[:slug]).first
 	stop [ 404, "Page not found" ] unless post
 	@title = post.title
 	erb :post, :locals => { :post => post }
@@ -61,20 +60,20 @@ get '/past/:year/:month/:day/:slug' do
 end
 
 get '/past' do
-	posts = Post.reverse_order(:created_at)
+	posts = Post.all(:order => "created_at DESC")
 	@title = "Archive"
 	erb :archive, :locals => { :posts => posts }
 end
 
 get '/past/tags/:tag' do
 	tag = params[:tag]
-	posts = Post.filter(:tags.like("%#{tag}%")).reverse_order(:created_at).limit(30)
+	posts = Post.all(:conditions => ["tags like ?", "%#{tag}%"], :order => "created_at DESC", :limit => 30)
 	@title = "Posts tagged #{tag}"
 	erb :tagged, :locals => { :posts => posts, :tag => tag }
 end
 
 get '/feed' do
-	@posts = Post.reverse_order(:created_at).limit(10)
+	@posts = Post.all(:order => "created_at DESC", :limit => 10)
 	content_type 'application/atom+xml', :charset => 'utf-8'
 	builder :feed
 end
@@ -108,14 +107,14 @@ end
 
 get '/past/:year/:month/:day/:slug/edit' do
 	auth
-	post = Post.filter(:slug => params[:slug]).first
+	post = Post.find_all_by_slug(params[:slug]).first
 	stop [ 404, "Page not found" ] unless post
 	erb :edit, :locals => { :post => post, :url => post.url }
 end
 
 post '/past/:year/:month/:day/:slug/' do
 	auth
-	post = Post.filter(:slug => params[:slug]).first
+	post = Post.find_all_by_slug(params[:slug]).first
 	stop [ 404, "Page not found" ] unless post
 	post.title = params[:title]
 	post.tags = params[:tags]

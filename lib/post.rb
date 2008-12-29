@@ -3,26 +3,9 @@ require File.dirname(__FILE__) + '/../vendor/maruku/maruku'
 $LOAD_PATH.unshift File.dirname(__FILE__) + '/../vendor/syntax'
 require 'syntax/convertors/html'
 
-class Post < Sequel::Model
-	unless table_exists?
-		set_schema do
-			primary_key :id
-			text :title
-			text :body
-			text :body_html
-			text :summary_html
-			text :slug
-			text :tags
-			timestamp :created_at
-		end
-		create_table
-	end
+class Post < ActiveRecord::Base
 	
-	before_save do
-	  self.body_html = to_html(body)
-	  # Maruku will occasionlly escape a trailing </p>, easier to strip it out than to figure out why.
-	  self.summary_html = to_html(summary).gsub("&lt;/p&gt;", "")
-	end
+	before_save :cache_html
 
 	def url
 		d = created_at
@@ -76,5 +59,11 @@ class Post < Sequel::Model
 			end
 		end
 		[ to_html(show.join("\n\n")), hide.size > 0 ]
+	end
+	
+	def cache_html
+	  self.body_html = to_html(body)
+	  # Maruku will occasionlly escape a trailing </p>, easier to strip it out than to figure out why.
+	  self.summary_html = to_html(summary).gsub("&lt;/p&gt;", "")
 	end
 end

@@ -37,7 +37,7 @@ describe Post do
 		@post.title = 'hello'
 		@post.body = 'world'
 		@post.save
-		Post.filter(:title => 'hello').first.body.should == 'world'
+		Post.find_all_by_title('hello').first.body.should == 'world'
 	end
 
 	it "generates a slug from the title (but saved to db on first pass so that url never changes)" do
