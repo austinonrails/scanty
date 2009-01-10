@@ -1,62 +1,34 @@
 body {
-	margin: 0px;
-	padding: 20px;
-	margin-left: 50px;
-	background: #fff;
-	text-align: justify;
-	font: 14px "Trebuchet MS", Arial, Helvetica, sans-serif;
-	color: #000;
+  font-family:Helvetica,Arial,sans-serif;
+  font-size:14px;
+  line-height:22px;
 }
 
-h1, h2, h3 {
-	font: 1.82em;
-	font-weight: normal;
-	font-family: Arial, Helvetica, sans-serif;
-	text-align: left;
+tr, td {
+  border: none;
 }
-
-p, ol, ul {
-	line-height: 1.67em;
-}
-
-ul {
-	padding-left: 1.2em;
-}
-
-a {
-	color: red;
-}
-
-a:hover {
-	text-decoration: none;
-}
-
-hr {
-	display: none;
-}
-
 /* Logo */
 
 #logo h1 {
-	margin: 0;
-	height: 160px;
-	padding: 40px 0 0 0px;
+  margin: 0;
+	padding: 40px 0 0 0;
 	text-transform: lowercase;
 	letter-spacing: -2px;
+	line-height:28px;
 	font-size: 4em;
 	font-weight: normal;
+	font-family: Arial, Helvetica, sans-serif;
 }
 
 #logo h1 a {
-	display: block;
 	text-decoration: none;
 	color: #9b0808;
 }
 
 #logo p {
-	margin: -103px 0 0 2px;
+  margin: 0 0 0 2px;
 	text-transform: uppercase;
-	font-family: Tahoma, Arial, Helvetica, sans-serif;
+	font-family: Arial, Helvetica, sans-serif;
 	font-weight: bold;
 }
 
@@ -92,20 +64,11 @@ hr {
 	text-decoration: none;
 }
 
-/* Content */
-
-#content {
-	margin: 0px auto;
-	padding: 20px 0 0 0;
-	float: left;
-	width: 50em;
-	margin-bottom: 10px;
-}
-
 /* Post */
 
 .post {
 	margin-top: 20px;
+	width: 90%;
 }
 
 .post .date {
@@ -126,7 +89,7 @@ hr {
 	margin: 0;
 	padding: 0;
 	display: block;
-	margin-top: -5px;
+	margin-top: -3px;
 	font-size: 14px;
 	color: #5C5C5C;
 	
@@ -177,12 +140,13 @@ hr {
 .postzoom {
 	margin-top: 20px;
 	position: relative;
+	width: 90%;
 }
 
 .postzoom .title {
 	margin: 0;
 	padding: 0px 0 0 0;
-	font-size: 3em;
+	font-size: 2em;
 }
 
 .postzoom .meta {
@@ -211,30 +175,64 @@ hr {
 	right: 0;
 }
 
-/* Footer */
-
-#footer {
-	margin: 0 auto;
-	padding-top: 20px;
-	padding-bottom: 20px;
-	font-family: Tahoma, Arial, Helvetica, sans-serif;
+.sidebar ul {
+	margin: 0;
 }
 
+.sidebar ul.first {
+  margin-top:20px;
+}
+
+.sidebar li {
+	margin-bottom: 30px;
+	list-style: none;
+}
+
+.sidebar li ul {
+	border-top: 1px dashed #666633;
+	margin-bottom: 15px;
+}
+
+.sidebar li li {
+	margin: 0;
+	padding: 4px 0 4px 0;
+	list-style:none;
+}
+
+.sidebar li li a {
+}
+
+.sidebar h2 {
+	padding: 0;
+	margin: 0 0 6px 0;
+	font-size: 1.4em;
+}
+
+.sidebar a {
+	text-decoration: none;
+}
+
+.sidebar a:hover {
+	text-decoration: underline;
+}
+
+
+/* Footer */
 #legal {
 	clear: both;
 	margin: 0;
 	padding: 10px 0;
 	font-size: 10px;
 	color: #525252;
+	text-align: center;
 }
 
-/* Archive */
-.archive .date {
+#archive .date {
 	font-size: 85%;
 	color: #828170;
 }
 
-.archive .title a {
+#archive .title a {
 	font-size: 120%;
 	text-decoration: none;
 	padding-left:10px;

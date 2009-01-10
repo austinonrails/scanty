@@ -2,25 +2,58 @@
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 	<title><%= @title || Blog.title %></title>
+	<link href="/reset-fonts-grids.css" rel="stylesheet" type="text/css" />
+	<link href="/base.css" rel="stylesheet" type="text/css" />
 	<link href="/main.css" rel="stylesheet" type="text/css" />
+	<link href="/feed" rel="alternate" title="Primary Feed" type="application/atom+xml" />
 </head>
 <body>
-<div id="header">
+<div id="doc3" class="yui-t6">
+<div id="hd">
 	<div id="logo">
 		<h1><a href="/"><%= Blog.title %></a></h1>
 		<p><%= Blog.tagline %></p>
 	</div>
 </div>
 
-<div id="content">
-	<%= yield %>
+<div id="bd">
+  <div id="yui-main">
+      <div class="yui-b">
+	  <%= yield %>
+	  </div>
+  </div>
+  <div class="yui-b sidebar">
+      <ul class="first">
+          <li>
+              <h2>Meta</h2>
+              <ul>
+                  <li><a href="http://members.austinonrails.org">Our members</a></li>
+                  <li><a href="http://www.google.com/calendar/embed?src=8cshfr43jabb15q5ehs23pd5lk%40group.calendar.google.com&ctz=America/Chicago">Meeting Calendar</a></li>
+                  <li><a href="http://www.workingwithrails.com/group/4451-austin-on-rails">Working With Rails</a></li>
+                  <li><a href="/past">Archives</a></li>
+              </ul>
+              <h2>Support Us!</h2>
+              <ul>
+                  <li><a href="http://www.dreamhost.com/r.cgi?219980">Sign up on Dreamhost</a>, no setup fee with promotion code <em>AOR</em></li>
+              </ul>
+              <h2>Get in Touch</h2>
+              <ul>
+                  <li>Mailing lists: <a href="http://lists.austinonrails.org/listinfo.cgi/announcements-austinonrails.org">announce</a>, <a href="http://lists.austinonrails.org/listinfo.cgi/austinonrails-austinonrails.org">discuss</a>, <a href="http://lists.austinonrails.org/listinfo.cgi/jobs-austinonrails.org">jobs</a>
+                  <li>IRC: #austinonrails on freenode</li>
+              </ul>
+              <ul><li><a href= "http://www.billmonk.com/public_library/index/d9e7b71d5b4d9b10e9735f3a3ec2c47f63ec6eaf"><img src= "http://www.billmonk.com/badge/library/d9e7b71d5b4d9b10e9735f3a3ec2c47f63ec6eaf.jpg" border="0"></a></li>
+              </ul>
+          </li>
+      </ul>
+  </div>
 </div>
 
-<div id="footer">
+<div id="ft">
 	<p id="legal">
 	Powered by <a href="http://github.com/adamwiggins/scanty/tree/master">Scanty</a> | 
 	Design adapted from <a href="http://www.freecsstemplates.org/preview/replenish">Replenish</a> |
 	AOR is led by <a href="http://damonc.com">Damon Clinkscales</a>
+</div>
 </div>
 </body>
 </html>

@@ -45,7 +45,7 @@ layout 'layout'
 
 get '/' do
 	posts = Post.all(:order => "created_at DESC", :limit => 10)
-	erb :index, :locals => { :posts => posts }, :layout => false
+	erb :index, :locals => { :posts => posts }
 end
 
 get '/past/:year/:month/:day/:slug/' do
