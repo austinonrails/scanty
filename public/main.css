@@ -193,6 +193,10 @@ tr, td {
 	margin-bottom: 15px;
 }
 
+.sidebar li ul.booklist {
+  border-top: none;
+}
+
 .sidebar li li {
 	margin: 0;
 	padding: 4px 0 4px 0;
