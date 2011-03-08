@@ -33,7 +33,16 @@ class Post < ActiveRecord::Base
 	end
 
 	def self.make_slug(title)
-		title.downcase.gsub(/ /, '_').gsub(/[^a-z0-9_]/, '').squeeze('_')
+		candidate = title.downcase.gsub(/ /, '_').gsub(/[^a-z0-9_]/, '').squeeze('_')
+    slug,cnt = nil,1
+    while slug.nil? 
+      p = Post.find_by_slug("#{candidate}#{cnt}")
+      if p.nil?
+        slug = "#{candidate}#{cnt}"
+      end
+      cnt += 1 
+    end
+    slug
 	end
 
 	########
