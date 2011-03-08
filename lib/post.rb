@@ -37,10 +37,8 @@ class Post < ActiveRecord::Base
     slug,cnt = nil,1
     while slug.nil? 
       p = Post.find_by_slug("#{candidate}#{cnt}")
-      if p.nil?
-        slug = "#{candidate}#{cnt}"
-      end
-      cnt += 1 
+      slug = "#{candidate}#{cnt}" if p.nil?
+      cnt += 1
     end
     slug
 	end
